@@ -92,7 +92,17 @@
 
     async function main() {
       alert("LINE Developers x Skooldio")
-      await liff.init({ liffId: "2002899660-MoJZ9Rq8" })
+      // await liff.init({ liffId: "2002899660-MoJZ9Rq8" })
+      await liff.init({
+          liffId: '2002899660-MoJZ9Rq8', // Use own liffId
+      })
+      .then(() => {
+          // start to use LIFF's api
+          getEnvironment()
+      })
+      .catch((err) => {
+          console.log("error :",err);
+      });
       getEnvironment()
       // getUserProfile()
       // getContext()
