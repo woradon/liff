@@ -51,9 +51,12 @@
     }
 
     function logOut() {
+      liff.logout()
+      window.location.reload()
     }
 
     function closed() {
+      liff.closeWindow()
     }
 
     async function scanCode() {
@@ -98,8 +101,12 @@
     async function main() {
       alert("LINE Developers x Skooldio")
       await liff.init({ liffId: "2002899660-MoJZ9Rq8" })
-      getEnvironment()
-      getUserProfile()
+      if(liff.isLoggeIn()) {
+        getEnvironment()
+        getUserProfile()
+      } else {
+        liff.login()
+      }
       // getContext()
       // getFriendship()
       // createUniversalLink()
